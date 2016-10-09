@@ -4,22 +4,23 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.ArrayList;
 
 public class RecentBooksActivity extends Activity {
     ArrayList<String> books; //Load here list of books pls. Something you need in search
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recent_books);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int errorCode, Intent resultContainer) {
+    public void onActivityResult(int requestCode, int errorCode, Intent resultContainer) {
         switch (requestCode) {
             case 42:
-                Uri bookPath = Uri.parse(resultContainer.getDataString());
+                Uri bookPath = Uri.parse(resultContainer.getStringExtra("result"));
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(bookPath);
                 startActivity(intent);
@@ -27,7 +28,7 @@ public class RecentBooksActivity extends Activity {
         }
     }
 
-    protected void onSearchClick() {
+    public void onSearchClick(View v) {
         Intent intent = new Intent("Library_SEARCH");
         Bundle extras = new Bundle();
         extras.putStringArrayList("books", books);

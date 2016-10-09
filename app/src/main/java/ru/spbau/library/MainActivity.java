@@ -4,51 +4,52 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends Activity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
     }
 
     @Override
-    protected void onRestart() {
+    public void onRestart() {
         super.onRestart();
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int errorCode, Intent resultContainer) {
+    public void onActivityResult(int requestCode, int errorCode, Intent resultContainer) {
         switch (requestCode) {
             case 42:
                 if (errorCode == RESULT_OK) {
-                    Uri bookPath = Uri.parse(resultContainer.getDataString());
+                    Uri bookPath = Uri.parse(resultContainer.getStringExtra("result"));
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(bookPath);
                     startActivity(intent);
@@ -57,7 +58,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    protected void onSearchClick() {
+    public void onSearchClick(View v) {
         Intent intent = new Intent("Library_SEARCH");
         //intent.putExtra("books", null);
         Bundle extras = new Bundle();
@@ -66,12 +67,12 @@ public class MainActivity extends Activity {
         startActivityForResult(intent, 42);
     }
 
-    protected void onRecentBooksClick() {
+    public void onRecentBooksClick(View v) {
         Intent intent = new Intent(this, RecentBooksActivity.class);
         startActivity(intent);
     }
 
-    protected void onOpenFromLocalClick() {
+    public void onOpenFromLocalClick(View v) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("file/*");
         startActivityForResult(intent, 42);
