@@ -20,11 +20,13 @@ public class RecentBooksActivity extends Activity {
     public void onActivityResult(int requestCode, int errorCode, Intent resultContainer) {
         switch (requestCode) {
             case 42:
-                Uri bookPath = Uri.parse(resultContainer.getStringExtra("result"));
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(bookPath);
-                startActivity(intent);
-                break;
+                if (errorCode == RESULT_OK) {
+                    Uri bookPath = Uri.parse(resultContainer.getStringExtra("result"));
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(bookPath);
+                    startActivity(intent);
+                    break;
+                }
         }
     }
 

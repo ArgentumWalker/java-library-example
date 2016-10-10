@@ -16,14 +16,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".RecentBooksActivity"> </activity>
-        <activity android:name=".BookSearchActivity">
+        <activity
+                android:name=".BookSearchActivity"
+                android:label="Search Activity">
             <intent-filter>
                 <action android:name="Library_SEARCH" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".BookAnotherSearchActivity">
+        <activity
+                android:name=".BookAnotherSearchActivity"
+                android:label="Another Search Activity">
             <intent-filter>
                 <action android:name="Library_SEARCH" />
 
