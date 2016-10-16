@@ -24,7 +24,7 @@ public class BookSearchActivity extends Activity {
 
     public void returnResult(String pathToBook) {
         Intent intent = new Intent();
-        intent.putExtra("result", pathToBook);
+        intent.setData(Uri.parse(pathToBook));
         setResult(RESULT_OK, intent);
         finish();
     }

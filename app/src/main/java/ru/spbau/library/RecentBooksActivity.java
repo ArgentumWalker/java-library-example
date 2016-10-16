@@ -1,5 +1,6 @@
 package ru.spbau.library;
 
+import android.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -21,7 +22,7 @@ public class RecentBooksActivity extends Activity {
         switch (requestCode) {
             case 42:
                 if (errorCode == RESULT_OK) {
-                    Uri bookPath = Uri.parse(resultContainer.getStringExtra("result"));
+                    Uri bookPath = resultContainer.getData();
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(bookPath);
                     startActivity(intent);

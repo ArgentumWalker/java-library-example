@@ -1,5 +1,6 @@
 package ru.spbau.library;
 
+import android.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +25,7 @@ public class BookAnotherSearchActivity extends Activity {
 
     public void returnResult(String pathToBook) {
         Intent intent = new Intent();
-        intent.putExtra("result", pathToBook);
+        intent.setData(Uri.parse(pathToBook));
         setResult(RESULT_OK, intent);
         finish();
     }
